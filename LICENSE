@@ -1,0 +1,40 @@
+MIT License
+
+Copyright (c) 2026 莯聆筱
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+补充说明 / Additional notice
+
+本许可证仅覆盖本仓库中的源代码与原创文档。
+
+本仓库及配套 Release 中不包含任何影片文件。实验用影片的版权归各自权利人
+所有；`results/` 中的视频截图（frames）仅用于学术研究与教学演示中的画面
+情感分析，不得用于任何商业用途，也不得再分发用于替代观看原片。
+
+The MIT license above applies only to the source code and original
+documentation in this repository.
+
+No video files are included. Copyright of the analysed films belongs to their
+respective rights holders. The video frames under `results/` are provided
+solely for academic research and teaching demonstrations; they must not be
+used commercially, nor redistributed as a substitute for viewing the original
+films.

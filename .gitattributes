@@ -1,0 +1,26 @@
+# 统一换行符与文本判定，避免中文 Windows 环境下出现整文件 diff
+* text=auto
+
+# 源码 / 文档按文本处理，检出为 CRLF（Windows 友好）
+*.py    text diff=python
+*.md    text
+*.txt   text
+*.csv   text
+*.json  text
+*.yml   text
+*.yaml  text
+
+# 二进制文件不做换行符转换，git 也不逐行统计
+*.docx  binary
+*.xlsx  binary
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.mp4   binary
+*.tflite binary
+*.exe   binary
+
+# 让 GitHub 语言统计不要被数据文件淹没
+*.csv   linguist-vendored
+*.docx  linguist-documentation

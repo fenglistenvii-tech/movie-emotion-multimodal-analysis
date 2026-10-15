@@ -1,0 +1,32 @@
+# ============================================================================
+#  融合多模态信息的影视作品情感计算与鉴赏研究 —— 依赖清单
+#
+#  下面各版本为本机实测可正常运行的组合（Python 3.12.10 / Windows x64），
+#  使用 >= 下限约束，避免在别的机器上因锁死小版本而装不上。
+#  安装： pip install -r requirements.txt
+# ============================================================================
+
+# ---- 抽帧与字幕对齐（extract_frames.py）----
+# ffmpeg / ffprobe 为外部可执行文件，不走 pip：
+#   从 https://www.gyan.dev/ffmpeg/builds/ 下载 essentials 压缩包，
+#   把 ffmpeg.exe、ffprobe.exe 放到 src/ 目录下（脚本优先使用同目录的同名文件）。
+opencv-python>=4.9.0.80
+pysrt>=1.1.2              # 解析 .srt 字幕
+tqdm>=4.66.4              # 进度条
+mediapipe>=0.10.14        # BlazeFace 人脸检测（配合 src/blaze_face_short_range.tflite）
+pandas>=2.0.0
+numpy>=1.26.0
+
+# ---- 多模态情感分析（analyze_emotions.py）----
+snownlp>=0.12.3           # 中文文本情感分析
+deepface>=0.0.99          # 视觉表情识别
+tensorflow>=2.15.0        # deepface 的推理后端
+tf-keras>=2.15.0          # deepface + TF 2.16+ 需要，缺失会报 Keras 版本错误
+matplotlib>=3.8.0         # 绘制情感时间线
+
+# ---- 图形界面（main_ui.py，可选；不装则自动回退命令行）----
+PyQt5>=5.15.11
+
+# ---- 按需可选 ----
+openpyxl>=3.1.5           # 读写 .xlsx（results/ 下的汇总表）
+pysubs2>=1.7.3            # 统一读取 .ass / .ssa / .srt（extract_subtitles.py 的提示依赖）
