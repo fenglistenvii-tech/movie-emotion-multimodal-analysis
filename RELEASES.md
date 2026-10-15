@@ -88,7 +88,7 @@ Remove-Item -LiteralPath $tmp -Recurse -Force
 ## 二、发布 Release
 
 1. 打开仓库页面 → 右侧 **Releases** → **Create a new release**；
-   或直接访问 `https://github.com/你的用户名/仓库名/releases/new`。
+   或直接访问 `https://github.com/fenglistenvii-tech/movie-emotion-multimodal-analysis/releases/new`。
 2. **Choose a tag**：输入 `v1.0-testdata`，点 **Create new tag on publish**。
 3. **Release title**：`测试数据 + 运行环境（ffmpeg）`。
 4. **Describe this release**：把下面这段贴进去（可按需修改）。
@@ -138,7 +138,7 @@ Remove-Item -LiteralPath $tmp -Recurse -Force
 
 ```markdown
 测试数据与 ffmpeg 运行环境都不在仓库中，请到
-[Releases](https://github.com/你的用户名/仓库名/releases) 下载：
+[Releases](https://github.com/fenglistenvii-tech/movie-emotion-multimodal-analysis/releases) 下载：
 
 - `multimodal-emotion-results.7z` —— 三组实验运行结果（1.25 GB，含抽帧图）
 - `multimodal-emotion-results-lite.7z` —— 只要图表数值（11 MB）

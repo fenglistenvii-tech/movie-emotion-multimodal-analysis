@@ -15,8 +15,10 @@
 - [六、数据准备](#六数据准备)
 - [七、运行方法](#七运行方法)
 - [八、输出说明](#八输出说明)
-- [九、已知问题与注意事项](#九已知问题与注意事项)
-- [十、说明与致谢](#十说明与致谢)
+- [九、测试结果（Releases）](#九测试结果releases)
+- [十、已知问题与注意事项](#十已知问题与注意事项)
+- [验证状态](#验证状态)
+- [十一、版权、许可与致谢](#十一版权许可与致谢)
 
 ---
 
@@ -45,7 +47,7 @@
 
 ```bash
 # 1. 取代码
-git clone https://github.com/你的用户名/movie-emotion-multimodal-analysis.git
+git clone https://github.com/fenglistenvii-tech/movie-emotion-multimodal-analysis.git
 cd movie-emotion-multimodal-analysis
 
 # 2. 装依赖（Python 3.9 ~ 3.12）
@@ -61,13 +63,15 @@ python main_ui.py            # 图形界面
 
 **测试数据（三组影片的完整运行结果）请到 Releases 下载：**
 
-> [Releases](https://github.com/你的用户名/movie-emotion-multimodal-analysis/releases)
+> [Releases](https://github.com/fenglistenvii-tech/movie-emotion-multimodal-analysis/releases)
 > → 下载 `multimodal-emotion-results.7z`（1.25 GB，含 1641 张 4K 抽帧图）
 > → 解压得到 `results/` 目录
 
-也可只下载分析结果（`multimodal-emotion-results-lite.7z`，11 MB，含 CSV / xlsx / 情感时间线图）而不含抽帧图。
-字段含义、目录结构与已知问题见 [`docs/数据说明.md`](docs/数据说明.md)；
-打包与上传 Release 的方法见 [`RELEASES.md`](RELEASES.md)。
+也可只下载分析结果（`multimodal-emotion-results-lite.7z`，10.58 MB，含 CSV / xlsx / 情感时间线图）而不含抽帧图。
+
+> **具体怎么用（从安装到看懂输出）见 [`docs/使用说明.md`](docs/使用说明.md)。**
+> 字段含义、目录结构与已知问题见 [`docs/数据说明.md`](docs/数据说明.md)；
+> ffmpeg 配置细节见 [`docs/环境依赖说明.md`](docs/环境依赖说明.md)。
 
 ---
 
@@ -114,6 +118,7 @@ python main_ui.py            # 图形界面
 ├── data/subtitles/                # 三部影片的字幕（各一两百 KB，已入库）
 │
 ├── docs/
+│   ├── 使用说明.md                 # 怎么用：安装、运行、看懂输出、常见问题
 │   ├── 数据说明.md                 # Release 数据包的目录结构、字段含义与已知问题
 │   └── 环境依赖说明.md              # ffmpeg / ffprobe 的用途、版本与配置方式
 │
@@ -170,12 +175,12 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-**ffmpeg 外部依赖**（`1_prepare_dataset.py` 必须）：
+**ffmpeg 外部依赖**（只有 `extract_subtitles.py` 需要）：
 
 1. 从 <https://www.gyan.dev/ffmpeg/builds/> 下载 `ffmpeg-release-essentials.zip`；
 2. 解压后把 `ffmpeg.exe`、`ffprobe.exe` 复制到 `src/` 目录下（脚本会优先使用同目录的这两个文件），或加入系统 `PATH`。
 
-**DeepFace 权重**：首次运行 `3_analyze_emotions_range.py` 时，DeepFace 会自动下载约 200MB 的人脸检测 / 表情识别权重到用户目录（`.deepface/`），需要联网，请耐心等待。这些权重已加入 `.gitignore`，不会也不应上传。
+**DeepFace 权重**：首次运行 `analyze_emotions.py` 时，DeepFace 会自动下载约 200MB 的人脸检测 / 表情识别权重到用户目录（`.deepface/`），需要联网，请耐心等待。这些权重已加入 `.gitignore`，不会也不应上传。
 
 ---
 
@@ -289,7 +294,7 @@ python analyze_emotions.py <数据集目录> <起始帧> <结束帧>
 | `multimodal-emotion-results-lite.7z` | 只含 CSV、xlsx 汇总表与情感时间线图 | 11 MB |
 | `ffmpeg-2026-03-09-full-win64.7z` | `ffmpeg.exe` + `ffprobe.exe` + 环境说明 | 127 MB |
 
-下载地址：<https://github.com/你的用户名/movie-emotion-multimodal-analysis/releases>
+下载地址：<https://github.com/fenglistenvii-tech/movie-emotion-multimodal-analysis/releases>
 
 | 数据集 | 对应影片 | 全片分析 | 局部精读区间 |
 | --- | --- | --- | --- |
@@ -311,7 +316,7 @@ python analyze_emotions.py <数据集目录> <起始帧> <结束帧>
 
 ---
 
-## 九、已知问题与注意事项
+## 十、已知问题与注意事项
 
 以下几处是整理仓库时发现的问题。前两条已通过**重命名脚本**修好，其余保留原实现并在此说明，便于对照论文提交版本。
 
@@ -329,7 +334,7 @@ python analyze_emotions.py <数据集目录> <起始帧> <结束帧>
    ```
 
    而当时的实际文件名是 `2_extract_subtitles.py` 和 `3_analyze_emotions_range.py`，直接运行会 `ModuleNotFoundError`。
-   重命名后第一条导入已经成立；第二条需把模块名改成 `analyze_emotions`（原 `3_analyze_emotions_range.py`）。
+   重命名后第一条导入已经成立；第二条需把模块名改成 `analyze_emotions`（即原名 `3_analyze_emotions_range.py` 的文件，仓库中已重命名）。
 
 3. ~~`main_ui.py` 命令行回退分支的参数顺序传错~~ —— **已修复**
 
@@ -390,7 +395,7 @@ python analyze_emotions.py <数据集目录> <起始帧> <结束帧>
 
 ---
 
-## 十、版权、许可与致谢
+## 十一、版权、许可与致谢
 
 ### 许可
 
