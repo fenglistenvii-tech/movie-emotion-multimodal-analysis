@@ -64,8 +64,9 @@ python main_ui.py            # 图形界面
 **测试数据（三组影片的完整运行结果）请到 Releases 下载：**
 
 > [Releases](https://github.com/fenglistenvii-tech/movie-emotion-multimodal-analysis/releases)
-> → 下载 `multimodal-emotion-results.7z`（1.25 GB，含 1641 张 4K 抽帧图）
-> → 解压得到 `results/` 目录
+> → 全量包：下载 `multimodal-emotion-results-split.7z.001` / `.002` / `.003` **三个分卷**，
+>   右键点 `.001` 用 7-Zip 解压（会自动连读后续分卷），得到 `.7z` 后再解压一次即得 `results/`
+> → 或只下 `multimodal-emotion-results-lite.7z`（10.58 MB，仅图表数据，不含抽帧图）
 
 也可只下载分析结果（`multimodal-emotion-results-lite.7z`，10.58 MB，含 CSV / xlsx / 情感时间线图）而不含抽帧图。
 
@@ -290,9 +291,13 @@ python analyze_emotions.py <数据集目录> <起始帧> <结束帧>
 
 | 附件 | 内容 | 体积 |
 | --- | --- | --- |
-| `multimodal-emotion-results.7z` | 三组结果全量，含 1641 张 4K 抽帧图 | 1.25 GB |
-| `multimodal-emotion-results-lite.7z` | 只含 CSV、xlsx 汇总表与情感时间线图 | 11 MB |
-| `ffmpeg-2026-03-09-full-win64.7z` | `ffmpeg.exe` + `ffprobe.exe` + 环境说明 | 127 MB |
+| `multimodal-emotion-results-split.7z.001~003` | 三组结果全量，含 1641 张 4K 抽帧图（分 3 卷） | 共 1.25 GB |
+| `multimodal-emotion-results-lite.7z` | 只含 CSV、xlsx 汇总表与情感时间线图 | 10.58 MB |
+| `ffmpeg-2026-03-09-full-win64.7z` | `ffmpeg.exe` + `ffprobe.exe` + 环境说明 | 126.77 MB |
+
+> 全量包拆成 3 个分卷（512 MB / 512 MB / 255 MB）。**三个都要下载**，然后右键点 `.001`
+> 用 7-Zip 解压（自动连读后续分卷），解出来的还是一个 `.7z`，再解压一次才是 `results/` 目录。
+> 只要图表数值的话，下载 10.58 MB 的轻量包即可。
 
 下载地址：<https://github.com/fenglistenvii-tech/movie-emotion-multimodal-analysis/releases>
 
