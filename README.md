@@ -269,7 +269,13 @@ python analyze_emotions.py <数据集目录> <起始帧> <结束帧>
 
 ### 8.3 汇总表
 
-`完整数据/初始数据.xlsx`、`完整数据/完整数据.xlsx` 与 `局部数据/局部数据（起止帧）.xlsx` 是把 CSV 结果按区间汇总、便于论文取数与制表的 Excel 版本。
+`完整数据/初始数据.xlsx`、`完整数据/完整数据.xlsx` 与 `局部数据/局部数据（起止帧）.xlsx`，
+是把流程产出的 CSV 数据转成 Excel 格式的版本（`.csv` 直接打开时中文与精度显示不佳），
+分别对应抽帧记录、全片分析结果与区间分析结果，数值与同名 `.csv` 一致。转成 xlsx 是为了
+查看方便、也便于答辩时取数制表。
+
+> 注意：`完整数据/` 里放的是**全片**结果（`初始数据.xlsx` 与 `完整数据.xlsx`），
+> `局部数据/` 里放的是**指定帧区间**的结果，两者不要混用。
 
 ---
 
@@ -347,12 +353,13 @@ python analyze_emotions.py <数据集目录> <起始帧> <结束帧>
 
    如 `<font face="WenQuanYi Micro Hei" size="66">`。分析阶段会用正则清洗后再送入 SnowNLP，**因此情感计算结果不受影响**；只是原始 CSV 可读性较差，属正常现象。
 
-7. **`results/` 里的人工汇总表存在两处不一致（不影响分析结果准确性）**
+7. **`*.xlsx` 的格式说明**
 
-   - `Titanic.Dataset_泰坦尼克号/完整数据/完整数据.xlsx` 的工作表名是 `dataset_some_analysis`，而 `The.Lychee.Road` 与 `Your.Name` 的同名文件工作表是 `dataset_full_analysis`。引用前请先打开核对内容。
-   - `Your.Name.Dataset_你的名字/1/` 是早期单次运行的遗留目录，只含一份 `dataset_full_analysis.csv` 与一张图，正式结果以 `完整数据/`、`局部数据/` 为准。
+   这些汇总表由流程产出的数据转成 Excel 格式——`dataset.csv` 与 `dataset_*_analysis.csv` 直接用 Excel
+   打开时中文与精度显示不佳，转成 `.xlsx` 便于查看与答辩取数。**数值与同名 `.csv` 一致**，
+   个别单元格的数字格式略有差异（例如 `time` 列 CSV 写作 `546.0`、xlsx 显示为 `546`），不影响数据。
 
-   这些 `*.xlsx` **不是脚本产出的**——`analyze_emotions.py` 只写 CSV 与 PNG——而是事后人工汇总整理，因此出现命名不一致属正常。
+   三组结果的工作表名已统一为 `dataset` / `dataset_full_analysis` / `dataset_some_analysis`。
 
 8. **字幕已做广告清理，时间戳未改动**
 
@@ -378,7 +385,8 @@ python analyze_emotions.py <数据集目录> <起始帧> <结束帧>
 | ffmpeg / ffprobe | `-version` | ✅ 可执行（213 MB / 212.8 MB，full build） |
 | `analyze_emotions.py` 端到端 | 真实数据切片跑完全流程 | ✅ 输出 CSV 与两张情感时间线图 |
 
-> 说明：`results/` 中的 `完整数据.xlsx`、`局部数据（起止帧）.xlsx` 等汇总表**不是**上述脚本产出的，脚本只写 CSV 与 PNG；那些 Excel 是事后人工汇总整理的。
+> 说明：`results/` 中的 `完整数据.xlsx`、`局部数据（起止帧）.xlsx` 等汇总表，是把抽帧对齐与情感分析
+> 产出的数据转成 Excel 格式的版本（原始 `.csv` 可读性差，转 xlsx 便于查看与答辩取数），数值与同名 `.csv` 一致。
 
 ---
 
